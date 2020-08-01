@@ -20,7 +20,6 @@ Where a is small, a = 0.1. In other words, instead of using the current gradient
 ![](Images/SGD%20with%20a%20variant%20of%20momentum.png)
 
    The only difference is that we add the term (1-α)(∇f(x_t,ϵ_t )  - ∇f(x_(t-1),ϵ_t )) to the update. As in standard variance-reduced methods, we use two gradients in each step. However, we do not need to use the gradient calculated at any checkpoints. Note that if  x_t (≈ x_(t-1)) , then our update becomes approximately the momentum one. These two terms will be similar as long as the algorithm is actually converging to some point, and so we can expect the algorithm to behave exactly like the classic momentum SGD towards the end of the optimization process.
-
 ![](Images/STORM%20Algorithm.png)
 
 ## Empirical Validation
