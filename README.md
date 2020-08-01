@@ -13,12 +13,13 @@ The stochastic gradient descent with momentum is typically implemented as
 ![](Images/SGD%20with%20momentum.png)
 Where a is small, a = 0.1. In other words, instead of using the current gradient ∇F(X_t) in the update step ofx_t, we use an exponential average of the past observed gradients.
 	
-While SGD with momentum and its variants have been successfully used in many machine learning applications, it is well known that the presence of noise in the stochastic gradients can nullify the theoretical gain of the momentum term. As a result, it is unclear how and why using momentum can be better than plain SGD. Although recent works have proved that a variant of SGD with momentum improves the non-dominant terms in the convergence rate of convex stochastic least square problems, it is still unclear if the actual convergence rate can be improved.
-Here, we take a different route. Instead of showing that the momentum in SGD works in the same way as in noiseless case, i.e. giving accelerated rates, we show that a variant of momentum can probably reduce the variance of the gradients. In its simplest form, the variant we propose is:
+       While SGD with momentum and its variants have been successfully used in many machine learning applications, it is well known that the presence of noise in the stochastic gradients can nullify the theoretical gain of the momentum term. As a result, it is unclear how and why using momentum can be better than plain SGD. Although recent works have proved that a variant of SGD with momentum improves the non-dominant terms in the convergence rate of convex stochastic least square problems, it is still unclear if the actual convergence rate can be improved.
+       
+       Here, we take a different route. Instead of showing that the momentum in SGD works in the same way as in noiseless case, i.e. giving accelerated rates, we show that a variant of momentum can probably reduce the variance of the gradients. In its simplest form, the variant we propose is:
 
 ![](Images/SGD%20with%20a%20variant%20of%20momentum.png)
 
-The only difference is that we add the term (1-α)(∇f(x_t,ϵ_t )  - ∇f(x_(t-1),ϵ_t )) to the update. As in standard variance-reduced methods, we use two gradients in each step. However, we do not need to use the gradient calculated at any checkpoints. Note that if  x_t (≈ x_(t-1)) , then our update becomes approximately the momentum one. These two terms will be similar as long as the algorithm is actually converging to some point, and so we can expect the algorithm to behave exactly like the classic momentum SGD towards the end of the optimization process.
+       The only difference is that we add the term (1-α)(∇f(x_t,ϵ_t )  - ∇f(x_(t-1),ϵ_t )) to the update. As in standard variance-reduced methods, we use two gradients in each step. However, we do not need to use the gradient calculated at any checkpoints. Note that if  x_t (≈ x_(t-1)) , then our update becomes approximately the momentum one. These two terms will be similar as long as the algorithm is actually converging to some point, and so we can expect the algorithm to behave exactly like the classic momentum SGD towards the end of the optimization process.
 
 ![](Images/STORM%20Algorithm.png)
 
